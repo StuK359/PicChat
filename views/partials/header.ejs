@@ -10,11 +10,11 @@
 <body>
   <nav>
     <img src="/images/camera.svg">
-    <a href="/photographs" <%- title === 'All Landscape Photographs' ? 'class="active"' : '' %>>ALL Photographs</a>
+    <a href="/movies" <%- title === 'All Movies' ? 'class="active"' : '' %>>ALL MOVIES</a>
     <% if (user) { %>
-      <a href="/photographers/new"	<%- title === 'Add Photographer' ? 'class="active"' : '' %>>
-      ADD PHOTOGRAPHER</a>
-      <a href="/photographs/new" <%- title === 'Add Photograph' ? 'class="active"' : '' %>>ADD Photo</a>
+      <a href="/performers/new"	<%- title === 'Add Performer' ? 'class="active"' : '' %>>
+		ADD PERFORMER</a>
+      <a href="/movies/new" <%- title === 'Add Movie' ? 'class="active"' : '' %>>ADD MOVIE</a>
       <a href="/logout">LOG OUT</a>
     <% } else { %>
       <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
