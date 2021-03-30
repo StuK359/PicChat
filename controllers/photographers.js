@@ -10,8 +10,8 @@ module.exports = {
 function addToPhotographer(req, res) {
   // Obtain the photo
   Photo.findById(req.params.photoId, function(err, photo) {
-    // Push the _id of the performer into the photo's photographer array
-    photo.photographer.push(req.body.photographerId);
+    // Push the _id of the photographer into the photo's photographer field
+    photo.photographer = req.body.photographerId;
     // Save the photo
     photo.save(function(err) {
       // Redirect back to the photo show route

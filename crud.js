@@ -1,6 +1,6 @@
 require('./config/database')
 const Photo = require('./models/photo');
-const Performer = require('./models/performer');
+const photographer = require('./models/photographer');
 
 let p;
 
