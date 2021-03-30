@@ -5,6 +5,6 @@ const isLoggedIn = require('../config/auth');
 
 router.get('/performers/new', isLoggedIn, performersCtrl.new);
 router.post('/performers', isLoggedIn, performersCtrl.create);
-router.post('/movies/:movieId/performers', isLoggedIn, performersCtrl.addToCast)
+router.post('/photos/:photoId/performers', isLoggedIn, performersCtrl.addToCast)
 
 module.exports = router;

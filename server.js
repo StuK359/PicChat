@@ -6,6 +6,8 @@ var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
 var methodOverride = require('method-override');
+var validate = require('mongoose-validator');
+
 
 // It's very important to require dotenv before any other module
 // that depends upon the properties added to process.env 
@@ -18,7 +20,7 @@ require('./config/database');
 require('./config/passport');
 
 var indexRouter = require('./routes/index');
-var moviesRouter = require('./routes/movies');
+var photosRouter = require('./routes/photos');
 var reviewsRouter = require('./routes/reviews');
 var performersRouter = require('./routes/performers');
 
@@ -52,7 +54,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', indexRouter);
-app.use('/movies', moviesRouter);
+app.use('/photos', photosRouter);
 app.use('/', reviewsRouter);
 app.use('/', performersRouter);
 
@@ -71,5 +73,24 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// Examples of mongoose-validator
+// var nameValidator = [
+//   validate({
+//     validator: 'isLength',
+//     arguments: [3, 50],
+//     message: 'Name should be between {ARGS[0]} and {ARGS[1]} characters',
+//   }),
+//   validate({
+//     validator: 'isAlphanumeric',
+//     passIfEmpty: true,
+//     message: 'Name should contain alpha-numeric characters only',
+//   }),
+// ]
+ 
+// var Schema = new mongoose.Schema({
+//   name: { type: String, required: true, validate: nameValidator },
+// });
+
 
 module.exports = app;

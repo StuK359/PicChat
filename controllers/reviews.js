@@ -1,4 +1,4 @@
-const Movie = require('../models/movie');
+const Photo = require('../models/photo');
 
 module.exports = {
   create,
@@ -8,18 +8,18 @@ module.exports = {
 // Include the next parameter - used for error handling in the catch
 function deleteReview(req, res, next) {
   // Note the cool "dot" syntax to query on the property of a subdoc
-  Movie.findOne({'reviews._id': req.params.id}).then(function(movie) {
+  Photo.findOne({'reviews._id': req.params.id}).then(function(photo) {
     // Find the review subdoc using the id method on Mongoose arrays
     // https://mongoosejs.com/docs/subdocs.html
-    const review = movie.reviews.id(req.params.id);
+    const review = photo.reviews.id(req.params.id);
     // Ensure that the review was created by the logged in user
-    if (!review.user.equals(req.user._id)) return res.redirect(`/movies/${movies._id}`);
+    if (!review.user.equals(req.user._id)) return res.redirect(`/photos/${photos._id}`);
     // Remove the review using the remove method of the subdoc
     review.remove();
-    // Save the updated movie
-    movie.save().then(function() {
-      // Redirect back to the movie's show view
-      res.redirect(`/movies/${movie._id}`);
+    // Save the updated photo
+    photo.save().then(function() {
+      // Redirect back to the photo's show view
+      res.redirect(`/photos/${photo._id}`);
     }).catch(function(err) {
       // Let Express display an error
       return next(err);
@@ -28,17 +28,17 @@ function deleteReview(req, res, next) {
 }
 
 function create(req, res) {
-  // Find the movie to embed the review within
-  Movie.findById(req.params.id, function(err, movie) {
+  // Find the photo to embed the review within
+  Photo.findById(req.params.id, function(err, photo) {
     // Add the user-centric info to req.body
     req.body.user = req.user._id;
     req.body.userName = req.user.name;
     req.body.userAvatar = req.user.avatar;
     // Push the subdoc for the review
-    movie.reviews.push(req.body);
+    photo.reviews.push(req.body);
     // Always save the top-level document (not subdocs)
-    movie.save(function(err) {
-      res.redirect(`/movies/${movie._id}`);
+    photo.save(function(err) {
+      res.redirect(`/photos/${photo._id}`);
     });
   });
 }

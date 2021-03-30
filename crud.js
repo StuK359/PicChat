@@ -1,10 +1,9 @@
 require('./config/database')
-const Movie = require('./models/movie');
+const Photo = require('./models/photo');
 const Performer = require('./models/performer');
 
-let m;
 let p;
 
-Movie.findOne({}, function(err, movie) {
-  m = movie;
+Photo.findOne({}, function(err, photo) {
+  p = photo;
 });

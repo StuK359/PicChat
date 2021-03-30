@@ -11,26 +11,31 @@ const reviewSchema = new Schema({
   timestamps: true
 });
 
-const movieSchema = new Schema({
+const photoSchema = new Schema({
   title: {
     type: String,
     required: true
   },
-  releaseYear: {
+  photoLink: {
+    type: String,
+    required: true
+  },
+  yearTaken: {
     type: Number,
     default: function () {
       return new Date().getFullYear();
     }
   },
-  mpaaRating: String,
+  location: String,
+  reviews: [reviewSchema],
   cast: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Performer'
+     type: Schema.Types.ObjectId,
+     ref: 'Performer'
   }],
-  nowShowing: { type: Boolean, default: false },
+//  nowShowing: { type: Boolean, default: false },
   reviews: [reviewSchema]
 }, {
   timestamps: true
 });
 
-module.exports = mongoose.model('Movie', movieSchema);
+module.exports = mongoose.model('Photo', photoSchema);

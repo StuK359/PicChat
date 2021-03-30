@@ -1,5 +1,5 @@
 const Performer = require('../models/performer');
-const Movie = require('../models/movie');
+const Photo = require('../models/photo');
 
 module.exports = {
   new: newPerformer,
@@ -8,14 +8,14 @@ module.exports = {
 };
 
 function addToCast(req, res) {
-  // Obtain the movie
-  Movie.findById(req.params.movieId, function(err, movie) {
-    // Push the _id of the performer into the movie's cast array
-    movie.cast.push(req.body.performerId);
-    // Save the movie
-    movie.save(function(err) {
-      // Redirect back to the movie show route
-      res.redirect(`/movies/${movie._id}`);
+  // Obtain the photo
+  Photo.findById(req.params.photoId, function(err, photo) {
+    // Push the _id of the performer into the photo's photographer array
+    photo.cast.push(req.body.performerId);
+    // Save the photo
+    photo.save(function(err) {
+      // Redirect back to the photo show route
+      res.redirect(`/photos/${photo._id}`);
     });
   });
 }
@@ -38,7 +38,7 @@ function newPerformer(req, res) {
     .sort('name')
     .exec(function (err, performers) {
       res.render('performers/new', {
-        title: 'Add Performer',
+        title: 'Add Photographer',
         performers
       });
   });

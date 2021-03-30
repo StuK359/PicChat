@@ -2,24 +2,22 @@
 
 <section id="show-page">
   <div>Title: </div>
-  <div><%= movie.title %></div>
-  <div>Release Year: </div>
-  <div><%= movie.releaseYear %></div>
-  <div>Rating: </div>
-  <div><%= movie.mpaaRating %></div>
-  <div>Now Showing: </div>
-  <div><%= movie.nowShowing ? 'Yes' : 'Nope' %></div>
+  <div><%= photo.title %></div>
+  <div>Photo:</div>
+  <img src="<%= photo.photoLink %>">
+  <div>Year Taken: </div>
+  <div><%= photo.yearTaken %></div>
   <!-- start cast list -->
   <div>Cast:</div>
   <ul>
-    <%- movie.cast.map(p => 
+    <%- photo.cast.map(p => 
       `<li>${p.name} <small>${p.born.toLocaleDateString()}</small></li>`
     ).join('') %>
   </ul>
   <!-- end cast list -->
 </section>
 <!-- add to cast form below this comment -->
-<form id="add-per-to-cast" action="/movies/<%= movie._id %>/performers" method="POST">
+<form id="add-per-to-cast" action="/photos/<%= photo._id %>/performers" method="POST">
   <select name="performerId">
     <%- performers.map(p => 
       `<option value="${p._id}">${p.name}</option>`
@@ -31,7 +29,7 @@
 <br><br>
 <h2>Reviews</h2>
 <% if (user) { %>
-  <form id="add-review-form" method="POST" action="/movies/<%= movie._id %>/reviews">
+  <form id="add-review-form" method="POST" action="/photos/<%= photo._id %>/reviews">
     <label>Review:</label>
     <textarea name="content"></textarea>
     <label>Rating:</label>
@@ -46,7 +44,7 @@
   </form>
 <% } %>
 
-<% if (movie.reviews.length) { %>
+<% if (photo.reviews.length) { %>
   <table>
     <thead>
       <tr>
@@ -60,7 +58,7 @@
     </thead>
     <tbody>
       <% let total = 0 %>
-      <% movie.reviews.forEach(function(r) { %>
+      <% photo.reviews.forEach(function(r) { %>
         <% total += r.rating %>
         <tr>
           <td class="review-user"><img src="<%= r.userAvatar %>"><%= r.userName %></td>
@@ -79,7 +77,7 @@
       <% }); %>
       <tr>
         <td colspan="3"></td>
-        <td><strong><%= (total / movie.reviews.length).toFixed(1) %></strong></td>
+        <td><strong><%= (total / photo.reviews.length).toFixed(1) %></strong></td>
       </tr>
     </tbody>
   </table>

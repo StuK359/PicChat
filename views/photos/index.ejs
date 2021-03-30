@@ -3,16 +3,17 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Release<br>Year</th>
+      <th>Year<br>Taken</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <% movies.forEach(function(m) { %>
+    <% photos.forEach(function(p) { %>
       <tr>
-        <td><%= m.title %></td>
-        <td><%= m.releaseYear %></td>
-        <td><a href="/movies/<%= m._id %>">DETAILS</a></td>
+        <td><%= p.title %></td>
+        <td><img src="<%= p.photoLink %>"></td>
+        <td><%= p.yearTaken %></td>
+        <td><a href="/photos/<%= p._id %>">Details</a></td>
       </tr>
       <% }); %>
     </tbody>
