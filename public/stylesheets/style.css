@@ -196,3 +196,8 @@ img {
   width: 500px;
 }
 
+logo {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+}

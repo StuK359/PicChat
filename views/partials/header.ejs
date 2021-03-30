@@ -9,7 +9,7 @@
 </head>
 <body>
   <nav>
-    <img src="/images/camera.svg">
+    <a href="/photos"><img src="/images/camera.svg" alt="Photos Home" align="start" style="width:60px;height:70px;"></a>
     <a href="/photos" <%- title === 'All Photos' ? 'class="active"' : '' %>>All Photos</a>
     <% if (user) { %>
       <a href="/photographers/new"	<%- title === 'Add Photographer' ? 'class="active"' : '' %>>
