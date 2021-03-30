@@ -1,13 +1,14 @@
 * {
   box-sizing: border-box;
   font-family: Helvetica;
-  color: #424748;
+  color:antiquewhite;
 }
 
 body {
   margin: 0;
   height: 100vh;
   display: grid;
+  color:antiquewhite;
   grid-template-rows: 50px 1fr;
   grid-template-areas: 
     "nav"
@@ -16,7 +17,7 @@ body {
 
 body > nav {
   grid-area: nav;
-  background-color: #B8C0C2;
+  background-color: #2b95af;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -34,7 +35,8 @@ body > main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #E8ECEB;
+  color:antiquewhite;
+  background-color: #19201f;
   padding: 20px;
   overflow-y: scroll;
 }

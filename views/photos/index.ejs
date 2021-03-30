@@ -11,7 +11,9 @@
     <% photos.forEach(function(p) { %>
       <tr>
         <td><%= p.title %></td>
+        <hr>
         <td><img src="<%= p.photoLink %>"></td>
+        <hr>
         <td><%= p.yearTaken %></td>
         <td><a href="/photos/<%= p._id %>">Details</a></td>
       </tr>
