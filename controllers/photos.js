@@ -1,5 +1,5 @@
 const Photo = require('../models/photo');
-const Performer = require('../models/performer');
+const Photographer = require('../models/photographer');
 
 module.exports = {
   index,
@@ -16,12 +16,12 @@ function index(req, res) {
 
 function show(req, res) {
   Photo.findById(req.params.id)
-//    .populate('cast')
+//    .populate('photographer')
     .exec(function(err, photo) {
     // Native MongoDB syntax
-     Performer
-       .find({_id: {$nin: photo.cast}})
-       .sort('name').exec(function(err, performers) {
+     Photographer
+       .find({_id: {$nin: photo.photographers}})
+       .sort('name').exec(function(err, photographers) {
          res.render('photos/show', { title: 'Photo Details', photo });
        });
     })     

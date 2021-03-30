@@ -122,7 +122,7 @@ table td {
 }
 
 #add-review-form,
-#add-performer-form {
+#add-photographer-form {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 1rem;
@@ -130,7 +130,7 @@ table td {
 }
 
 #add-review-form input[type="submit"],
-#add-performer-form input[type="submit"]  {
+#add-photographer-form input[type="submit"]  {
   width: 10rem;
   grid-column: 2 / 3;
 }
@@ -192,5 +192,6 @@ hr {
 img {
   -webkit-filter: drop-shadow(5px 5px 5px #222222);
   filter: drop-shadow(5px 5px 5px #070707);
+  width: 500px;
 }
 

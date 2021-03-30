@@ -7,23 +7,23 @@
   <img src="<%= photo.photoLink %>">
   <div>Year Taken: </div>
   <div><%= photo.yearTaken %></div>
-  <!-- start cast list -->
-  <div>Cast:</div>
+  
+  <div>Photographer:</div>
   <ul>
-    <%- photo.cast.map(p => 
+    <%- photo.photographers.map(p => 
       `<li>${p.name} <small>${p.born.toLocaleDateString()}</small></li>`
     ).join('') %>
   </ul>
-  <!-- end cast list -->
+  <!-- end photographers list -->
 </section>
-<!-- add to cast form below this comment -->
-<form id="add-per-to-cast" action="/photos/<%= photo._id %>/performers" method="POST">
-  <select name="performerId">
-    <%- performers.map(p => 
+<!-- add to photographers form below this comment -->
+<form id="add-per-to-photographers" action="/photos/<%= photo._id %>/photographers" method="POST">
+  <select name="photographerId">
+    <%- photographers.map(p => 
       `<option value="${p._id}">${p.name}</option>`
     ).join('') %>
   </select>
-  <button type="submit">Add to Cast</button>
+  <button type="submit">Add to photographers</button>
 </form>
 
 <br><br>

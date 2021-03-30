@@ -26,13 +26,13 @@ const photoSchema = new Schema({
       return new Date().getFullYear();
     }
   },
+    photographer: {
+    type: String,
+    required: true    
+  },
   location: String,
   reviews: [reviewSchema],
-  cast: [{
-     type: Schema.Types.ObjectId,
-     ref: 'Performer'
-  }],
-//  nowShowing: { type: Boolean, default: false },
+  public: { type: Boolean, default: false },
   reviews: [reviewSchema]
 }, {
   timestamps: true

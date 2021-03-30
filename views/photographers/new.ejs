@@ -2,12 +2,12 @@
 
 <div>Before adding, please ensure that the Photographer is not in the following list:</div>
 <section id="badge-container">
-  <% performers.forEach(function(p) { %>
+  <% photographers.forEach(function(p) { %>
     <article class="badge"><%= p.name %></article>
   <% }) %>
 </section>
 
-<form id="add-performer-form" action="/performers" method="POST">
+<form id="add-photographer-form" action="/photographers" method="POST">
   <label>Name:</label>
   <input type="text" name="name">
   <label>Born:</label>

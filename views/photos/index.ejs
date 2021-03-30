@@ -2,9 +2,10 @@
 <table id="list">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Photograph</th>
-      <th>Year Taken</th>
+      <th>Title:</th>
+      <th>Photograph: </th>
+      <th>Year Taken:</th>
+      <th>Photographer:</th>
       <th></th>
     </tr>
   </thead>
@@ -12,8 +13,9 @@
     <% photos.forEach(function(p) { %>
       <tr>
         <td><%= p.title %></td>
-        <td><img src="<%= p.photoLink %>" width="500"></td>
+        <td><img src="<%= p.photoLink %>"></td>
         <td><%= p.yearTaken %></td>
+        <td><%= p.photographer %></td>
         <td><a href="/photos/<%= p._id %>">Details</a></td>
       </tr>
       <% }); %>
