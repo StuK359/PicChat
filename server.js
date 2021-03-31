@@ -7,6 +7,7 @@ var session = require('express-session');
 var passport = require('passport');
 var methodOverride = require('method-override');
 var validate = require('mongoose-validator');
+var bootstrap = require('bootstrap'); 
 
 
 // It's very important to require dotenv before any other module
