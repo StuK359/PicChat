@@ -34,7 +34,7 @@ function create(req, res) {
   }
   const photo = new Photo(req.body);
   photo.save(function(err) {
-    if (err) return res.redirect('/photos/new');
-//    res.redirect(`/photos/`);
+    if (err) return res.redirect('/photos/');
+    res.redirect(`/photos/`);
   });
 }

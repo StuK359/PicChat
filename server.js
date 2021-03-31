@@ -38,6 +38,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(methodOverride('_method'));
 
+// Tells express to begin search for static assets, like images, in the public folder.
+// Now src= for static assets is formatted as "/images/landscape.svg"
+app.use(express.static('public')); 
+
 app.use(session({
   secret: process.env.SECRET,
   resave: false,

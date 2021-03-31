@@ -33,7 +33,6 @@ const photoSchema = new Schema({
   location: String,
   reviews: [reviewSchema],
   public: { type: Boolean, default: false },
-  reviews: [reviewSchema]
 }, {
   timestamps: true
 });

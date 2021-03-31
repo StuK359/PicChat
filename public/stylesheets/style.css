@@ -37,7 +37,7 @@ body > main {
   align-items: center;
   color:antiquewhite;
   background-color: #3d3c44;
-  padding: 20px;
+  padding: 10px;
   overflow-y: scroll;
 }
 
@@ -212,5 +212,5 @@ img {
 
 logo {
   position:absolute;
-  left: 5px;
+  left: 0px;
 }
