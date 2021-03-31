@@ -73,12 +73,20 @@ form *,
   font-size: 20px;
   padding: 5px;
   border-radius: 5px;
+  color: #d1d8bc;
+  background-color: #7b777e;
+}
+form > label {
+  color: #fbfbfb;
+  background-color: #57505c;
+  text-align: center;
 }
 
 #new-form input[type="submit"] {
   grid-column: span 2;
   width: 10rem;
   margin-left: auto;
+  color: darkblue;
 }
 
 table {
@@ -185,11 +193,15 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: fit-content;
+  margin-right: 10px;
 }
 
 .review-user img {
   border-radius: 50%;
   height: 40px;
+  width: auto;
+  padding-right: 10px;
 }
 
 img {
@@ -199,7 +211,6 @@ img {
 }
 
 logo {
-  position: absolute;
-  top: 5px;
-  right: 7px;
+  position:absolute;
+  left: 5px;
 }

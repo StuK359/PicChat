@@ -1,5 +1,4 @@
 const Photo = require('../models/photo');
-const Photographer = require('../models/photographer');
 
 module.exports = {
   index,
@@ -16,17 +15,11 @@ function index(req, res) {
 
 function show(req, res) {
   Photo.findById(req.params.id)
-//    .populate('photographer')
-    .exec(function(err, photo) {
+     .exec(function(err, photo) {
     // Native MongoDB syntax
-     Photographer
-       .find({_id: {$nin: photo.photographers}})
-       .sort('name').exec(function(err, photographers) {
-         res.render('photos/show', { title: 'Photo Details', photo });
-       });
-    })     
+       res.render('photos/show', { title: 'Photo Details', photo });
+    });     
 };
-
 
 function newPhoto(req, res) {
   res.render('photos/new', { title: 'Add Photo' });
@@ -42,7 +35,6 @@ function create(req, res) {
   const photo = new Photo(req.body);
   photo.save(function(err) {
     if (err) return res.redirect('/photos/new');
-//    res.redirect(`/photos/${photo._id}`);
-    res.redirect(`/photos/`);
+//    res.redirect(`/photos/`);
   });
 }

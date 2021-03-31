@@ -28,18 +28,26 @@ function create(req, res) {
   const s = req.body.born;
   req.body.born = `${s.substr(5, 2)}-${s.substr(8, 2)}-${s.substr(0, 4)}`;
   photographer.create(req.body, function (err, photographer) {
-    res.redirect('/photographer/new');
+    res.redirect('/photographers/new');
   });
 }
 
 function newPhotographer(req, res) {
-  photographer
-    .find({})
-    .sort('name')
-    .exec(function (err, photographers) {
-      res.render('photographers/new', {
-        title: 'Add Photographer',
-        photographers
-      });
+  res.render('photographers/new', { title: 'Add Photographer' });
+  };
+
+
+function create(req, res) {
+  // convert nowShowing's checkbox of nothing or "on" to boolean
+//  req.body.nowShowing = !!req.body.nowShowing;
+  // ensure empty inputs are removed so that model's default values will work
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key];
+  }
+  const photo = new Photo(req.body);
+  photo.save(function(err) {
+    if (err) return res.redirect('/photos/new');
+//    res.redirect(`/photos/${photo._id}`);
+    res.redirect(`/photos/`);
   });
 }
