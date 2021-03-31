@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="shortcut icon" type="image/x-icon" href="images/camera.svg">
+  <link rel="shortcut icon" type="image/x-icon" href="images/landscape.svg">
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <title><%= title %></title>
 </head>
 <body>
   <nav>
-    <logo><a href="/photos"><img src="/images/camera.svg" alt="Photos Home" align="start" style="width:60px;height:70px;"></a></logo>
+    <logo><a href="/photos"><img src="/images/landscape.svg" alt="Photos Home" align="start" style="width:60px;height:70px;"></a></logo>
     <a href="/photos" <%- title === 'All Photos' ? 'class="active"' : '' %>>All Photos</a>
     <% if (user) { %>
       <a href="/myphotos"	<%- title === 'My Photo Collection' ? 'class="active"' : '' %>>
