@@ -127,12 +127,14 @@ table td {
   grid-template-columns: auto auto;
   grid-gap: 1rem;
   margin-bottom: 2rem;
+  color: mediumblue;
 }
 
 #add-review-form input[type="submit"],
 #add-photographer-form input[type="submit"]  {
   width: 10rem;
   grid-column: 2 / 3;
+  color: mediumblue;
 }
 
 ul {
