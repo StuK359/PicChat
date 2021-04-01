@@ -48,15 +48,9 @@ function index(req, res) {
 
 function deletePhoto(req, res) {
   Photo.findOneAndDelete(
-    {_id: req.params.id, userName: req.user.userName}, function(err) {
+    {_id: req.params._id}, function(err) {
+      if (err) return next (err);
       res.redirect('/photos/');
-    }).catch(function(err) {
-      // Let Express display an error
-      return;
-//      return next(err);
     });
 };
-
-
-
-
+ 
