@@ -12,6 +12,9 @@
   <div>Location:</div>
   <div><%= photo.location %></div><div><%= console.log(photo); %></div>
 </section>
+<form action="/photos/<%= photo._id %> method=DELETE" method="POST>
+  <button type="submit">Delete Photo</button>
+</form>
 <br><br>
 <h2>Reviews</h2>
 <% if (user) { %>
