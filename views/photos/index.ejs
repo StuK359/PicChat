@@ -6,7 +6,7 @@
       <th>Photograph: </th>
       <th>Year Taken:</th>
       <th>Photographer:</th>
-      <th></th>
+      <td>Location:</td>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +16,7 @@
         <td><img src="<%= p.photoLink %>"></td>
         <td><%= p.yearTaken %></td>
         <td><%= p.photographer %></td>
+        <td><%= p.location %></td>
         <td><a href="/photos/<%= p._id %>">Details</a></td>
       </tr>
       <% }); %>

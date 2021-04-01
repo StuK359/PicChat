@@ -129,8 +129,7 @@ table td {
   font-weight: bold;
 }
 
-#add-review-form,
-#add-photographer-form {
+#add-review-form {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 1rem;
@@ -138,8 +137,7 @@ table td {
   color: mediumblue;
 }
 
-#add-review-form input[type="submit"],
-#add-photographer-form input[type="submit"]  {
+#add-review-form input[type="submit"]  {
   width: 10rem;
   grid-column: 2 / 3;
   color: mediumblue;

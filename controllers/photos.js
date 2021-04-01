@@ -4,7 +4,8 @@ module.exports = {
   index,
   show,
   new: newPhoto,
-  create
+  create,
+  delete: deletePhoto
 };
 
 function index(req, res) {
@@ -26,8 +27,6 @@ function newPhoto(req, res) {
 }
 
 function create(req, res) {
-  // convert nowShowing's checkbox of nothing or "on" to boolean
-//  req.body.nowShowing = !!req.body.nowShowing;
   // ensure empty inputs are removed so that model's default values will work
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key];
@@ -38,3 +37,22 @@ function create(req, res) {
     res.redirect(`/photos/`);
   });
 }
+
+function index(req, res) {
+  Photo.find({}, function(err, photos) {
+    res.render('photos/index', { title: 'All Photos', photos });
+  });
+}
+
+function deletePhoto(req, res) {
+  // Note the cool "dot" syntax to query on the property of a subdoc
+  Photo.findOneAndDelete(
+    {_id: req.params.id, photoOwner: req.user._id}, function(err) {
+        res.redirect('/photos');
+    }).catch(function(err) {
+      // Let Express display an error
+      return next(err);
+    });
+}
+
+
