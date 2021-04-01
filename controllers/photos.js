@@ -48,15 +48,13 @@ function index(req, res) {
 
 function deletePhoto(req, res) {
   Photo.findOneAndDelete(
-    {'photos._id': req.params.id, 'photos.userName': req.user.userName}, function(err, photos) {
-      console.log("Logging Photo id before delete:", req.params);
+    {_id: req.params.id, userName: req.user.userName}, function(err) {
       res.redirect('/photos/');
     }).catch(function(err) {
       // Let Express display an error
-      console.log("Error Path in deletePhoto", req.params);
       return next(err);
     });
-}
+};
 
 
 
