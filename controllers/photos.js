@@ -1,4 +1,3 @@
-const photo = require('../models/photo');
 const Photo = require('../models/photo');
 
 module.exports = {
@@ -37,7 +36,7 @@ function create(req, res) {
   req.body.userName = req.user.name;
   photo.save(function(err) {
     if (err) return res.redirect('/photos/');
-    res.redirect(`/photos/`);
+    res.redirect(`/`);
   });
 }
 
@@ -49,10 +48,12 @@ function index(req, res) {
 
 function deletePhoto(req, res) {
   Photo.findOneAndDelete(
-    {'photos._id': {$e:req.params.id}}, function(err) {
-        res.redirect('/photos/');
+    {'photos._id': req.params.id, 'photos.userName': req.user.userName}, function(err, photos) {
+      console.log("Logging Photo id before delete:", req.params);
+      res.redirect('/photos/');
     }).catch(function(err) {
       // Let Express display an error
+      console.log("Error Path in deletePhoto", req.params);
       return next(err);
     });
 }
