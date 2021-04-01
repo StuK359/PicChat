@@ -12,9 +12,6 @@
   <div>Location:</div>
   <div><%= photo.location %></div><div><%= console.log(photo); %></div>
 </section>
-<form action="/photos/<%= photo._id %> method=DELETE" method="POST>
-  <button type="submit">Delete Photo</button>
-</form>
 <br><br>
 <h2>Reviews</h2>
 <% if (user) { %>
@@ -30,6 +27,9 @@
       <option value="5">5</option>
     </select>
     <input type="submit" value="Add Review">
+  </form>
+  <form id="delete-photo-form" action="/photos/<%= photo._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete Photo</button>
   </form>
 <% } %>
 

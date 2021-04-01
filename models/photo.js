@@ -41,7 +41,7 @@ const photoSchema = new Schema({
     type: Boolean, 
     default: false 
   },
-  photoOwner: {
+  userName: {
     type: String
     // user: {
     //   type: Schema.Types.ObjectId, 

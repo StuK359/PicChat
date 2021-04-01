@@ -1,3 +1,4 @@
+const photo = require('../models/photo');
 const Photo = require('../models/photo');
 
 module.exports = {
@@ -32,6 +33,8 @@ function create(req, res) {
     if (req.body[key] === '') delete req.body[key];
   }
   const photo = new Photo(req.body);
+  req.body.user = req.user._id;
+  req.body.userName = req.user.name;
   photo.save(function(err) {
     if (err) return res.redirect('/photos/');
     res.redirect(`/photos/`);
@@ -45,14 +48,14 @@ function index(req, res) {
 }
 
 function deletePhoto(req, res) {
-  // Note the cool "dot" syntax to query on the property of a subdoc
   Photo.findOneAndDelete(
-    {_id: req.params.id, photoOwner: req.user._id}, function(err) {
-        res.redirect('/photos');
+    {'photos._id': {$e:req.params.id}}, function(err) {
+        res.redirect('/photos/');
     }).catch(function(err) {
       // Let Express display an error
       return next(err);
     });
 }
+
 
 
