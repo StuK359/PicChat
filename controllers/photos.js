@@ -52,9 +52,11 @@ function deletePhoto(req, res) {
       res.redirect('/photos/');
     }).catch(function(err) {
       // Let Express display an error
-      return next(err);
+      return;
+//      return next(err);
     });
 };
+
 
 
 
