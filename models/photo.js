@@ -41,14 +41,13 @@ const photoSchema = new Schema({
     type: Boolean, 
     default: false 
   },
-  userName: {
-    type: String
-    // user: {
-    //   type: Schema.Types.ObjectId, 
-    //   ref: 'User'
-    // },
-    // userName: String,
-    // userAvatar: String  
+  owner: {
+    user: {
+      type: Schema.Types.ObjectId, 
+      ref: 'User'
+    },
+    userId: String,
+    userName: String,
   }
  }, {
     timestamps: true
