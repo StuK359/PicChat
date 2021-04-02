@@ -6,7 +6,7 @@
   <div>Year Taken: <%= photo.yearTaken %></div><br>
   <div>Photographer: <%= photo.photographer %></div><br>
   <div>Location: <%= photo.location %></div><br>
-  <% console.log(photo);  if (user.name === photo.photographer) { %>
+  <% console.log(photo);  if (user && user.name === photo.photographer) { %>
     <br><form id="delete-photo-form" action="/photos/<%= photo._id %>?_method=DELETE" method="POST">
   <button type="submit">Delete Photo</button>
   </form>
