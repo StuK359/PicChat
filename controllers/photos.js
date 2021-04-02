@@ -47,7 +47,6 @@ function index(req, res) {
 }
 
 function deletePhoto(req, res) {
-  console.log("This should show us the photo that's being deleted",req.params);
   Photo.findOneAndDelete(
     {_id: req.params.id}, function(err) {
       if (err) return next (err);

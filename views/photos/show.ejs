@@ -1,19 +1,16 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-  <div>Title: </div>
-  <div><%= photo.title %></div>
-  <div>Photo:</div>
-  <img src="<%= photo.photoLink %>">
-  <div>Year Taken: </div>
-  <div><%= photo.yearTaken %></div>
-  <div>Photographer:</div>
-  <div><%= photo.photographer %></div>
-  <div>Location:</div>
-  <div><%= photo.location %></div>
+  <div><%= photo.title %></div><br>
+  <img src="<%= photo.photoLink %>"><br>
+  <div>Year Taken: <%= photo.yearTaken %></div><br>
+  <div>Photographer: <%= photo.photographer %></div><br>
+  <div>Location: <%= photo.location %></div><br>
+  <form id="delete-photo-form" action="/photos/<%= photo._id %>?_method=DELETE" method="POST">
+  <button type="submit">Delete Photo</button>
+  </form>
 </section>
-<br><br>
-<h2>Reviews</h2>
+<h3>Reviews</h3>
 <% if (user) { %>
   <form id="add-review-form" method="POST" action="/photos/<%= photo._id %>/reviews">
     <label>Review:</label>
@@ -28,19 +25,14 @@
     </select>
     <input type="submit" value="Add Review">
   </form>
-  <form id="delete-photo-form" action="/photos/<%= photo._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete Photo</button>
-  </form>
+
 <% } %>
 
 <% if (photo.reviews.length) { %>
   <table>
     <thead>
       <tr>
-        <th>User</th>
-        <th>Date</th>
-        <th>Review</th>
-        <th>Rating</th>
+        <th>Comments</th>
       </tr>
     </thead>
     <tbody>
@@ -50,8 +42,8 @@
         <tr>
           <td class="review-user"><img src="<%= r.userAvatar %>"><%= r.userName %></td>
           <td><%= r.createdAt.toLocaleDateString() %></td>
-          <td><%= r.content %></td>
-          <td><%= r.rating %></td>
+          <td>"<%= r.content %>"</td>
+          <td>Rating <%= r.rating %></td>
           <!-- Add this td -->
           <td>
             <% if (user && user._id.equals(r.user)) { %>
@@ -64,7 +56,7 @@
       <% }); %>
       <tr>
         <td colspan="3"></td>
-        <td><strong><%= (total / photo.reviews.length).toFixed(1) %></strong></td>
+        <td><strong>Avg. Review: <%= (total / photo.reviews.length).toFixed(1) %></strong></td>
       </tr>
     </tbody>
   </table>

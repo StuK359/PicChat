@@ -1,27 +1,18 @@
 <%- include('../partials/header') %>
+
 <table id="list">
-  <thead>
-    <tr>
-      <th>Title:</th>
-      <th>Photograph: </th>
-      <th>Year Taken:</th>
-      <th>Photographer:</th>
-      <td>Location:</td>
-    </tr>
-  </thead>
   <tbody>
-    
     <% photos.forEach(function(p) { %>
-      <tr>
-        <td><%= p.title %></td>
         <td><img src="<%= p.photoLink %>"></td>
-        <td><%= p.yearTaken %></td>
-        <td><%= p.photographer %></td>
-        <td><%= p.location %></td>
+      <div class="photo-details">
+        <td> <%= p.title %></td>
+        <td>Year Taken: <%= p.yearTaken %></td>
+        <td>Photographer: <%= p.photographer %></td>
+        <td>Location: <%= p.location %></td>
         <td><a href="/photos/<%= p._id %>">Details</a></td>
+      </div>  
       </tr>
       <% }); %>
     </tbody>
   </table>
-  
 <%- include('../partials/footer') %>

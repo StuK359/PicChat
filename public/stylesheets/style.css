@@ -34,7 +34,7 @@ body > main {
   grid-area: main;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items:flex-start;
   color:antiquewhite;
   background-color: #3d3c44;
   padding: 10px;
@@ -122,11 +122,14 @@ table td {
 #show-page {
   display: grid;
   grid-template-columns: auto auto;
+  justify-content: center;
+  justify-items: center;
   grid-gap: 1rem;
 }
 
 #show-page div:nth-child(even) {
   font-weight: bold;
+  
 }
 
 #add-review-form {
@@ -211,4 +214,24 @@ img {
 logo {
   position:absolute;
   left: 0px;
+}
+
+photo-details {
+	display: table;
+}
+
+table tr {
+	display: table-cell;
+}
+
+table tr td {
+	display: block;
+}
+
+#delete-photo-form {
+  color: red;
+  background-color: red;
+  border-color: red;
+  border-style: solid;
+  border-width: 1px;
 }
