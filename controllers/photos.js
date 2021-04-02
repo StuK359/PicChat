@@ -5,6 +5,7 @@ module.exports = {
   show,
   new: newPhoto,
   create,
+  update,
   delete: deletePhoto
 };
 
@@ -42,7 +43,11 @@ function create(req, res) {
 
 function index(req, res) {
   Photo.find({}, function(err, photos) {
-    res.render('photos/index', { title: 'All Photos', photos });
+    if(req.query.edit) {
+      res.render('photos/index', { title: 'All Photos', photos, editId: req.query._id, edit: true });
+    } else {
+      res.render('photos/index', { title: 'All Photos', photos, edit: false });
+    }
   });
 }
 
@@ -52,5 +57,13 @@ function deletePhoto(req, res) {
       if (err) return next (err);
       res.redirect('/photos/');
     });
-};
+}
  
+function update(req,res) {
+    Photo.findById(req.params.id, req.body.photo);
+    photo.save(function(err) {
+      if (err) return res.redirect('/photos/');
+      res.redirect(`/photos/`);
+    });
+    res.redirect('/photos/');
+}

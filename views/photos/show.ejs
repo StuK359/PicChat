@@ -1,14 +1,22 @@
 <%- include('../partials/header') %>
-
+<% let edit = true; %>
 <section id="show-page">
   <div><%= photo.title %></div><br>
   <img src="<%= photo.photoLink %>"><br>
   <div>Year Taken: <%= photo.yearTaken %></div><br>
   <div>Photographer: <%= photo.photographer %></div><br>
   <div>Location: <%= photo.location %></div><br>
-  <form id="delete-photo-form" action="/photos/<%= photo._id %>?_method=DELETE" method="POST">
+  <% if (edit && user) { %>
+    <!-- <form action="/photos/:id=<%= photo._id %>?_method=PUT" method="POST">
+      <input name="photo.photoLink" type="text">
+      <button type="submit">Update Photo</button>
+    </form> -->
+  <% }  %>
+  <% if (user) { %>
+    <br><form id="delete-photo-form" action="/photos/<%= photo._id %>?_method=DELETE" method="POST">
   <button type="submit">Delete Photo</button>
   </form>
+  <% }  %>
 </section>
 <h3>Reviews</h3>
 <% if (user) { %>
