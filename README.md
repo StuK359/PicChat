@@ -1,5 +1,5 @@
 # Project Title: PicChat: Landscape Edition
-PicChat: Landscape Edition is a landscape photography photo-sharing and discussion board. 
+PicChat: Landscape Edition is a landscape photography photo-sharing and discussion board. PicChat is a framework for hosting specialized photo-sharing sites, such as Landscape photography, astrophotography, animals, sporting events, etc.
 
 ## Home Screen
 ![https://i.imgur.com/hM40aUb.jpg](https://i.imgur.com/hM40aUb.jpg)
