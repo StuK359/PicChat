@@ -9,6 +9,7 @@ body {
   height: 100vh;
   display: grid;
   color:rgb(188, 223, 51);
+  font-family: 'Noto Sans JP', sans-serif;
   grid-template-rows: 50px 1fr;
   grid-template-areas: 
     "nav"
@@ -213,6 +214,7 @@ img {
 
 logo {
   position: absolute;
+  justify-self: left;
   left: 0px;
 }
 

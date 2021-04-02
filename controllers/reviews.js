@@ -2,6 +2,7 @@ const Photo = require('../models/photo');
 
 module.exports = {
   create,
+  update,
   delete: deleteReview
 };
 
@@ -36,6 +37,16 @@ function create(req, res) {
     req.body.userAvatar = req.user.avatar;
     // Push the subdoc for the review
     photo.reviews.push(req.body);
+    // Always save the top-level document (not subdocs)
+    photo.save(function(err) {
+      res.redirect(`/photos/${photo._id}`);
+    });
+  });
+}
+
+function update(req, res) {
+     // Find the photo to embed the review within
+  Photo.review.findById(req.params.id, function(err, photo) {
     // Always save the top-level document (not subdocs)
     photo.save(function(err) {
       res.redirect(`/photos/${photo._id}`);

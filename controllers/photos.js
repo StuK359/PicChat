@@ -63,7 +63,7 @@ function update(req,res) {
     Photo.findById(req.params.id, req.body.photo);
     photo.save(function(err) {
       if (err) return res.redirect('/photos/');
-      res.redirect(`/photos/`);
+      res.redirect(`/`);
     });
     res.redirect('/photos/');
 }
