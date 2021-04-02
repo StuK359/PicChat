@@ -9,5 +9,6 @@ router.get('/new', isLoggedIn, photosCtrl.new);
 router.get('/:id', photosCtrl.show);
 router.post('/', isLoggedIn, photosCtrl.create);
 router.delete('/:id', isLoggedIn, photosCtrl.delete);
+router.put('/:id', photosCtrl.update);
 
 module.exports = router;
